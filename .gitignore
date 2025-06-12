@@ -1,0 +1,8 @@
+# Ignorar datos generados por Docker y WordPress
+/data/
+/www/
+
+# Opcional: Ignorar otros archivos comunes de desarrollo o del sistema operativo
+.DS_Store
+Thumbs.db
+*.log
