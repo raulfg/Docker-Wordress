@@ -26,13 +26,26 @@ Ensure you have installed:
 
 ## 🚀 Usage
 
-1.  **Clone the Repository (if applicable) or Download the Files:**
-    If you have uploaded this project to a Git repository:
+1.  **Clone the Repository:**
+    The simplest way is to clone the repository. This will create a new directory named `docker-wordpress` with the project files:
     ```bash
-    git clone <REPOSITORY_URL>
-    cd <PROJECT_DIRECTORY_NAME>
+    git clone https://github.com/raulfg/docker-wordpress.git
+    cd docker-wordpress
     ```
-    Otherwise, just make sure you have `docker-compose.yml` and `apache-config.conf` in your working directory.
+
+    **Alternative: Clone into a specific folder**
+    If you prefer to name your project folder differently or clone into an existing directory:
+    a. Create your desired project folder (e.g., `my-wordpress-project`) and navigate into it:
+       ```bash
+       mkdir my-wordpress-project
+       cd my-wordpress-project
+       ```
+    b. Then, clone the repository content directly into this folder using a `.` at the end of the command:
+       ```bash
+       git clone https://github.com/raulfg/docker-wordpress.git .
+       ```
+
+    If you are not cloning, simply ensure you have `docker-compose.yml` and `apache-config.conf` in your working directory.
 
 2.  **Start the Services:**
     Navigate to the project's root directory (where the `docker-compose.yml` file is located) and run:
@@ -40,6 +53,7 @@ Ensure you have installed:
     docker-compose up -d
     ```
     This will download the necessary Docker images (if it's the first time) and create and start the containers in the background (`-d`).
+    If you prefer to see the container logs directly in your terminal (foreground mode), you can omit the `-d` flag: `docker-compose up`. To stop the services when running in foreground mode, press `Ctrl+C` in the terminal. Note that this only stops the containers; to remove them, you'll still need to run `docker-compose down` afterwards.
 
 3.  **Access the Services:**
     *   **WordPress:** Open your browser and go to `http://localhost` (or `http://localhost:80`).
@@ -55,12 +69,12 @@ Ensure you have installed:
         *   User: `root`
         *   Password: `password` (this is the `MYSQL_ROOT_PASSWORD` defined in `docker-compose.yml`)
 
-4.  **Stop the Services:**
-    To stop all containers associated with this project, run in the same directory:
+4.  **Stop and Remove the Services:**
+    To stop and remove all containers, networks, and volumes (not the locally mapped ones in `./data/` and `./www/`) associated with this project, run in the same directory:
     ```bash
     docker-compose down
     ```
-    This will stop and remove the containers. Data in `./data/` and `./www/` will persist on your local system as they are mapped as volumes.
+    This command is used whether you started the services with `docker-compose up -d` (detached mode) or if you ran them in foreground mode and stopped them with `Ctrl+C`. It ensures a clean shutdown and removal of the Docker resources created by this project. The data in `./data/` (database) and `./www/` (WordPress files) will persist on your local system.
 
 ## 🔧 Customization
 
@@ -115,13 +129,26 @@ Asegúrate de tener instalados:
 
 ## 🚀 Uso
 
-1.  **Clonar el Repositorio (si aplica) o Descargar los Archivos:**
-    Si has subido este proyecto a un repositorio Git:
+1.  **Clonar el Repositorio:**
+    La forma más sencilla es clonar el repositorio. Esto creará un nuevo directorio llamado `docker-wordpress` con los archivos del proyecto:
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
-    cd <NOMBRE_DEL_DIRECTORIO_DEL_PROYECTO>
+    git clone https://github.com/raulfg/docker-wordpress.git
+    cd docker-wordpress
     ```
-    Si no, simplemente asegúrate de tener `docker-compose.yml` y `apache-config.conf` en tu directorio de trabajo.
+
+    **Alternativa: Clonar en una carpeta específica**
+    Si prefieres nombrar la carpeta de tu proyecto de manera diferente o clonar en un directorio existente:
+    a. Crea la carpeta de proyecto deseada (por ejemplo, `mi-proyecto-wordpress`) y navega hacia ella:
+       ```bash
+       mkdir mi-proyecto-wordpress
+       cd mi-proyecto-wordpress
+       ```
+    b. Luego, clona el contenido del repositorio directamente en esta carpeta usando un `.` al final del comando:
+       ```bash
+       git clone https://github.com/raulfg/docker-wordpress.git .
+       ```
+
+    Si no vas a clonar, simplemente asegúrate de tener `docker-compose.yml` y `apache-config.conf` en tu directorio de trabajo.
 
 2.  **Iniciar los Servicios:**
     Navega al directorio raíz del proyecto (donde se encuentra el archivo `docker-compose.yml`) y ejecuta:
@@ -129,6 +156,7 @@ Asegúrate de tener instalados:
     docker-compose up -d
     ```
     Esto descargará las imágenes de Docker necesarias (si es la primera vez) y creará e iniciará los contenedores en segundo plano (`-d`).
+    Si prefieres ver los logs de los contenedores directamente en tu terminal (modo primer plano), puedes omitir el parámetro `-d`: `docker-compose up`. Para detener los servicios cuando se ejecutan en modo primer plano, presiona `Ctrl+C` en la terminal. Ten en cuenta que esto solo detiene los contenedores; para eliminarlos, necesitarás ejecutar `docker-compose down` después.
 
 3.  **Acceder a los Servicios:**
     *   **WordPress:** Abre tu navegador y ve a `http://localhost` (o `http://localhost:80`).
@@ -144,12 +172,12 @@ Asegúrate de tener instalados:
         *   Usuario: `root`
         *   Contraseña: `password` (es la `MYSQL_ROOT_PASSWORD` definida en `docker-compose.yml`)
 
-4.  **Detener los Servicios:**
-    Para detener todos los contenedores asociados a este proyecto, ejecuta en el mismo directorio:
+4.  **Detener y Eliminar los Servicios:**
+    Para detener y eliminar todos los contenedores, redes y volúmenes (no los mapeados localmente en `./data/` y `./www/`) asociados a este proyecto, ejecuta en el mismo directorio:
     ```bash
     docker-compose down
     ```
-    Esto detendrá y eliminará los contenedores. Los datos en `./data/` y `./www/` persistirán en tu sistema local, ya que están mapeados como volúmenes.
+    Este comando se utiliza tanto si iniciaste los servicios con `docker-compose up -d` (modo segundo plano) como si los ejecutaste en modo primer plano y los detuviste con `Ctrl+C`. Asegura una detención y eliminación limpias de los recursos Docker creados por este proyecto. Los datos en `./data/` (base de datos) y `./www/` (archivos de WordPress) persistirán en tu sistema local.
 
 ## 🔧 Personalización
 
